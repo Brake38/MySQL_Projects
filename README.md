@@ -1,6 +1,6 @@
 # Cruise Line Database – MySQL Coursework
 
-This repository contains MySQL assignments and database design work completed as part of the *Database Principles* course (ITEC 3245) at Middle Georgia State University.
+This repository contains MySQL assignments and database design work completed as part of the coursework for my Database Principles class at Middle Georgia State University.
 
 ## Overview
 The coursework involved:
