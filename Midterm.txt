@@ -1,0 +1,1060 @@
+mysql> Select *
+    -> FROM PUBLISHER;
++-----------------+----------+---------+------------+--------------+
+| Publisher_Name  | City     | Country | Telephone  | Year_Founded |
++-----------------+----------+---------+------------+--------------+
+| Mega Publishing | New York | USA     | 5105551234 | 1920         |
++-----------------+----------+---------+------------+--------------+
+1 row in set (0.01 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ^C
+mysql> ALTER COLUMN PUBLISHER
+    -> DELETE FROM PUBLISHER WHERE Publisher_Name='Mega Publishing';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'COLUMN PUBLISHER
+DELETE FROM PUBLISHER WHERE Publisher_Name='Mega Publishing'' at line 1
+mysql> DELETE FROM Publisher_Name WHERE Publisher_Name='Mega Publishing';
+ERROR 1146 (42S02): Table 'good_reading.publisher_name' doesn't exist
+mysql> DELETE FROM PUBLISHER WHERE City='New York';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> Select *
+    -> FROM PUBLISHER;
+Empty set (0.01 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Mega Publishing', 'New York', 'USA', '510-555-1234', '1920',
+    ->  'Acme and Sons, Inc.', 'St. Louis', 'USA', '510-555-3456', '1873',
+    ->  'Das Book', 'Frankfurt', 'Germany', '011 49 69 1234 5678', '1572',
+    ->  'Ye Olde Printing Press', 'London', 'England', '011 44 20 4567', '1572', 
+    ->  'Das Book', 'Frankfurt', 'Germany', '011 49 69 1234 5678', '1572',c^C
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Mega Publishing','New York','USA','510-555-1234','1920');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> ('Aceme and Sons, Inc.','St. Louis','USA','510-555-3456','1873',
+    ->  'Das Book','Frankfurt','Germany','011 49 69 1234 5678','1572');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Aceme and Sons, Inc.','St. Louis','USA','510-555-3456','1873',
+ 'Das Book','Fra' at line 1
+mysql> ('Acme and Sons, Inc.','St. Louis','USA','510-555-3456','1873',  'Das Book','Frankfurt','Germany','011 49 69 1234 5678','1572');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Acme and Sons, Inc.','St. Louis','USA','510-555-3456','1873',  'Das Book','Fran' at line 1
+mysql> INSERT INTO TABLE
+    -> ^C
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Acme and Sons, Inc.','St. Louis','USA','510-555-3456','1873');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Das Book','Frankfurt','Germany','011 49 69 1234 5678','1572',
+    ->  'Ye Olde Printing Press','London','England','011 44 20 4567','1733',
+    ->  'Flourish and Blotts','Diagon Alley','England','011 44 20 4567 8952','233',
+    ->  'Outback Publishing','Sydney','Australia','031 61 08 6813','1861',
+    ->  'Down Under Press','Melbourne','Australia','031 61 04 8527 1593','1972', 
+    ->  'Fortune Cookie Publishing','Beijing','China','024 86 10 8529 1567','1238');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Das Book','Frankfurt','Germany','011 49 69 1234 5678','1572');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Ye Olde Printing Press','London','England','011 44 20 4567','1733');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> ('Flourish and Blotts','Diagon Alley','England','011 44 20 4567 8952','233');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Flourish and Blotts','Diagon Alley','England','011 44 20 4567 8952','233')' at line 1
+mysql> ('Flourish and Blotts','Diagon Alley','England','011 44 20 4567 8952','233');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Flourish and Blotts','Diagon Alley','England','011 44 20 4567 8952','233')' at line 1
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Flourish and Blotts','Diagon Alley','England','011 44 20 4567 8952','233');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Outback Publishing','Sydney','Australia','031 61 08 6813','1861',
+    ->  'Down Under Press','Melbourne','Australia','031 61 04 8527 1593','1972', 
+    ->  'Fortune Cookie Publishing','Beijing','China','024 86 10 8529 1567','1238');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Outback Publishing','Sydney','Australia','031 61 08 6813');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Outback Publishing','Sydney','Australia','031 61 08 6813','1861');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Down Under Press','Melbourne','Australia','031 61 04 8527 1593','1972');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO PUBLISHER
+    -> VALUES
+    -> ('Fortune Cookie Publishing','Beijing','China','024 86 10 8529 1567','1238');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT *
+    -> FROM PUBLISHER;
++---------------------------+--------------+-----------+---------------------+--------------+
+| Publisher_Name            | City         | Country   | Telephone           | Year_Founded |
++---------------------------+--------------+-----------+---------------------+--------------+
+| Acme and Sons, Inc.       | St. Louis    | USA       | 510-555-3456        | 1873         |
+| Das Book                  | Frankfurt    | Germany   | 011 49 69 1234 5678 | 1572         |
+| Down Under Press          | Melbourne    | Australia | 031 61 04 8527 1593 | 1972         |
+| Flourish and Blotts       | Diagon Alley | England   | 011 44 20 4567 8952 | 233          |
+| Fortune Cookie Publishing | Beijing      | China     | 024 86 10 8529 1567 | 1238         |
+| Mega Publishing           | New York     | USA       | 510-555-1234        | 1920         |
+| Outback Publishing        | Sydney       | Australia | 031 61 08 6813      | 1861         |
+| Ye Olde Printing Press    | London       | England   | 011 44 20 4567      | 1733         |
++---------------------------+--------------+-----------+---------------------+--------------+
+8 rows in set (0.01 sec)
+
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    -> ('1','Bookimus Writimus','232','284',
+    ->  '2','Jonathan Slow','1837','1887',
+    ->  '3','Stephen Queen','1938',' ',
+    ->  '4','Russell Jennings','1920','1943',
+    ->  '5','Joe Schmoe','1962',' ',
+    ->  '6','Alexander Scribblalotte','1868','1911',
+    ->  '7','Mary Jotanote','1811','1873',
+    ->  '8','Simon Bonaparte','1783','1831');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    -> ('1','Bookimus Writimus','232','284');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    ->  '2','Jonathan Slow','1837','1887';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2','Jonathan Slow','1837','1887'' at line 3
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    -> ('2','Jonathan Slow','1837','1887');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    -> ('3','Stephen Queen','1938',' ');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    -> ('4','Russell Jennings','1920','1943',
+    ->  '5','Joe Schmoe','1962',' ');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO AUTHOR
+    -> VALUES
+    -> ('4','Russell Jennings','1920','1943'),
+    -> ('5','Joe Schmoe','1962',' '),
+    -> ('6','Alexander Scribblalotte','1868','1911'),
+    -> ('7','Mary Jotanote','1811','1873'),
+    -> ('8','Simon Bonaparte','1783','1831');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> FROM AUTHOR
+    -> ;
++---------------+-------------------------+-----------+-----------+
+| Author_Number | Author_Name             | Year_Born | Year_Died |
++---------------+-------------------------+-----------+-----------+
+| 1             | Bookimus Writimus       | 232       | 284       |
+| 2             | Jonathan Slow           | 1837      | 1887      |
+| 3             | Stephen Queen           | 1938      |           |
+| 4             | Russell Jennings        | 1920      | 1943      |
+| 5             | Joe Schmoe              | 1962      |           |
+| 6             | Alexander Scribblalotte | 1868      | 1911      |
+| 7             | Mary Jotanote           | 1811      | 1873      |
+| 8             | Simon Bonaparte         | 1783      | 1831      |
++---------------+-------------------------+-----------+-----------+
+8 rows in set (0.01 sec)
+
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('1',"Don't throw rocks at strangers",'1856','274','Fortune Cookie Publishing');
+ERROR 1406 (22001): Data too long for column 'Book_Name' at row 1
+mysql> ALTER TABLE PUBLISHER
+    -> MODIFY COL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> ALTER TABLE BOOK
+    -> MODIFY COLUMN Book_Name VARCHAR(40);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('1',"Don't throw rocks at strangers",'1856','274','Fortune Cookie Publishing');
+ERROR 1406 (22001): Data too long for column 'Publisher_Name' at row 1
+mysql> ALTER TABLE BOOK
+    -> MODIGY COLUMN Publisher_Name VARCHAR(40);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'MODIGY COLUMN Publisher_Name VARCHAR(40)' at line 2
+mysql> ALTER TABLE BOOK
+    -> MODIFY COLUMN Publisher_Name VARCHAR(40);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('1',"Don't throw rocks at strangers",'1856','274','Fortune Cookie Publishing');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('2','Things to do since discovering fire','273','6','Mega Publishing')
+    -> ('3','Things to throw off a cliff','1939','512','Acme and Sons, Inc.')
+    -> ('4','101 Roadrunner Recipes','1962','97','Acme and Sons, Inc.')
+    -> ('5','Prussian ideals in the modern world','1860','208','Das Book');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('3','Things to throw off a cliff','1939','512','Acme and Sons, Inc.')
+('4','101' at line 4
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('2','Things to do since discovering fire','273','6','Mega Publishing'),
+    -> ('3','Things to throw off a cliff','1939','512','Acme and Sons, Inc.'),
+    -> ('4','101 Roadrunner Recipes','1962','97','Acme and Sons, Inc.'),
+    -> ('5','Prussian ideals in the modern world','1860','208','Das Book');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('6','Cheeses of the world','1881','610','Ye Olde Printing Press'),
+    -> ('7','Your new cauldron and you','1811','793','Flourish and Blotts'),
+    -> ("That's fast! An Autobahn Reader's Guide",'1970','321','Das Book');
+ERROR 1136 (21S01): Column count doesn't match value count at row 3
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('6','Cheeses of the world','1881','610','Ye Olde Printing Press'),
+    -> ('7','Your new cauldron and you','1811','793','Flourish and Blotts'),
+    -> ('8',"That's fast! An Autobahn Reader's Guide",'1970','321','Das Book');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('9','Walkabout with Roos','1983','206','Outback Publishing')
+    -> ('10','Ken, shrimp and other Barbie accessories','1982','307','Outback Publishing');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('10','Ken, shrimp and other Barbie accessories','1982','307','Outback Publishin' at line 4
+mysql> INSERT INTO BOOK
+    -> VALUES
+    -> ('9','Walkabout with Roos','1983','206','Outback Publishing'),
+    -> ('10','Ken, shrimp and other Barbie accessories','1982','307','Outback Publishing');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> FROM BOOK;
++-------------+------------------------------------------+--------------+-------+---------------------------+
+| Book_Number | Book_Name                                | Publish_Year | Pages | Publisher_Name            |
++-------------+------------------------------------------+--------------+-------+---------------------------+
+| 1           | Don't throw rocks at strangers           | 1856         | 274   | Fortune Cookie Publishing |
+| 10          | Ken, shrimp and other Barbie accessories | 1982         | 307   | Outback Publishing        |
+| 2           | Things to do since discovering fire      | 273          | 6     | Mega Publishing           |
+| 3           | Things to throw off a cliff              | 1939         | 512   | Acme and Sons, Inc.       |
+| 4           | 101 Roadrunner Recipes                   | 1962         | 97    | Acme and Sons, Inc.       |
+| 5           | Prussian ideals in the modern world      | 1860         | 208   | Das Book                  |
+| 6           | Cheeses of the world                     | 1881         | 610   | Ye Olde Printing Press    |
+| 7           | Your new cauldron and you                | 1811         | 793   | Flourish and Blotts       |
+| 8           | That's fast! An Autobahn Reader's Guide  | 1970         | 321   | Das Book                  |
+| 9           | Walkabout with Roos                      | 1983         | 206   | Outback Publishing        |
++-------------+------------------------------------------+--------------+-------+---------------------------+
+10 rows in set (0.01 sec)
+
+mysql> INSERT INTO CUSTOMER
+    -> VALUES
+    -> ('1','Fred Flinstone','3 Stoney Canyon Rd','Bedrock','New Stone Age','USA');
+ERROR 1406 (22001): Data too long for column 'State' at row 1
+mysql> ALTER TABLE CUSTOMER
+    -> MODIFY COLUMN state VARCHAR(20);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO CUSTOMER
+    -> VALUES
+    -> ('1','Fred Flinstone','3 Stoney Canyon Rd','Bedrock','New Stone Age','USA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO CUSTOMER
+    -> VALUES
+    -> ('2','Herman Munster','1313 Mockingbird Ln','Los Angeles','California','USA'),
+    -> ('3','Stewie Griffin','10 Spooner St','Quahog','Rhode Island','USA'),
+    -> ('4','Elroy Jetson','43 Galaxy Parkway','Venus','Milky Way','Outer Space'),
+    -> ('5','Norville Rogers','102 Groovy Ave','Coolsville','California','USA'), 
+    -> ('6','Foghorn Leghorn','86 Colonel Dr','Fried City','Kentucky','USA');
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO WRITING
+    -> VALUES
+    -> ('1','2'),
+    -> ('1','7'),
+    -> ('2','1'),
+    -> ('3','4'),
+    -> ('4','3'),
+    -> ('5','2'),
+    -> ('6','6'),
+    -> ('7','8'),
+    -> ('8','3'),
+    -> ('8','5'),
+    -> ('9','5'),
+    -> ('10','5');
+Query OK, 12 rows affected (0.01 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+mysql> INSERT TABLE SALE
+    -> VALUES
+    -> ('^C
+mysql> ALTER COLUMN
+    -> MODIF^C
+mysql> ALTER TABLE SALE
+    -> MO^C
+mysql> INSERT TABLE SALE
+    -> VALUE
+    -> ^C
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('1','1','MAR 1 2019','18.95','1');
+ERROR 1292 (22007): Incorrect date value: 'MAR 1 2019' for column 'Date' at row 1
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('1','1','2019-MAR-01','18.95','1');
+ERROR 1292 (22007): Incorrect date value: '2019-MAR-01' for column 'Date' at row 1
+mysql> ALTER TABLE BOOK
+    -> MODIFY COLUMN Date VARCHAR(20);
+ERROR 1054 (42S22): Unknown column 'Date' in 'book'
+mysql> ALTER TABLE SALE
+    -> MODIFY COLUMN Date VARCHAR(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('1','1','MAR 1 2019','18.95','1');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`good_reading`.`sale`, CONSTRAINT `sale_ibfk_2` FOREIGN KEY (`Customer_Number`) REFERENCES `customer` (`Customer_Number`))
+mysql> SELECT *
+    -> FROM WRITING
+    -> ;
++-------------+---------------+
+| Book_Number | Author_Number |
++-------------+---------------+
+| 1           | 2             |
+| 1           | 7             |
+| 2           | 1             |
+| 3           | 4             |
+| 4           | 3             |
+| 5           | 2             |
+| 6           | 6             |
+| 7           | 8             |
+| 8           | 3             |
+| 8           | 5             |
+| 9           | 5             |
+| 10          | 5             |
++-------------+---------------+
+12 rows in set (0.01 sec)
+
+mysql> SELECT *
+    -> FROM CUSTOMER;
++-----------------+-----------------+---------------------+-------------+---------------+-------------+
+| Customer_Number | Customer_Name   | Street              | City        | state         | Country     |
++-----------------+-----------------+---------------------+-------------+---------------+-------------+
+| 1               | Fred Flinstone  | 3 Stoney Canyon Rd  | Bedrock     | New Stone Age | USA         |
+| 2               | Herman Munster  | 1313 Mockingbird Ln | Los Angeles | California    | USA         |
+| 3               | Stewie Griffin  | 10 Spooner St       | Quahog      | Rhode Island  | USA         |
+| 4               | Elroy Jetson    | 43 Galaxy Parkway   | Venus       | Milky Way     | Outer Space |
+| 5               | Norville Rogers | 102 Groovy Ave      | Coolsville  | California    | USA         |
+| 6               | Foghorn Leghorn | 86 Colonel Dr       | Fried City  | Kentucky      | USA         |
++-----------------+-----------------+---------------------+-------------+---------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('1','1','MAR 1 2019','18.95','1');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`good_reading`.`sale`, CONSTRAINT `sale_ibfk_2` FOREIGN KEY (`Customer_Number`) REFERENCES `customer` (`Customer_Number`))
+mysql> DESCRIBE BOOK;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| Book_Number    | char(2)     | NO   | PRI | NULL    |       |
+| Book_Name      | varchar(40) | YES  |     | NULL    |       |
+| Publish_Year   | char(4)     | YES  |     | NULL    |       |
+| Pages          | char(3)     | YES  |     | NULL    |       |
+| Publisher_Name | varchar(40) | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> DESCRIBE SALE;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| Book_Number     | char(2)      | YES  | MUL | NULL    |       |
+| Customer_Number | varchar(2)   | YES  | MUL | NULL    |       |
+| Date            | varchar(20)  | YES  |     | NULL    |       |
+| Price           | decimal(7,2) | YES  |     | NULL    |       |
+| Quantity        | char(2)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE BOOK ALTER COLUMN Book_Number NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 1
+mysql> ALTER TABLE BOOK ALTER COLUMN Book_Number NULL
+    -> ^C
+mysql> ALTER TABLE BOOK
+    -> MODIFY COLUMN Book_Number NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 2
+mysql> ALTER TABLE BOOK
+    -> ALTER COLUMN Book_Number datatype NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'datatype NULL' at line 2
+mysql> ALTER TABLE BOOK
+    -> ALTER COLUMN
+    -> ^C
+mysql> ALTER TABLE BOOK
+    -> ALTER COLUMN Book_Number int NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int NULL' at line 2
+mysql> ALTER TABLE BOOK
+    -> ALTER COLUMN Book_Number char(20) NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'char(20) NULL' at line 2
+mysql> ALTER TABLE BOOK
+    -> ALTER COLUMN Book_Number char(20) NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'char(20) NOT NULL' at line 2
+mysql> ALTER TABLE BOOK MODIFY Book_Number char(2) DEFAULT 0;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE BOOK;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| Book_Number    | char(2)     | NO   | PRI | 0       |       |
+| Book_Name      | varchar(40) | YES  |     | NULL    |       |
+| Publish_Year   | char(4)     | YES  |     | NULL    |       |
+| Pages          | char(3)     | YES  |     | NULL    |       |
+| Publisher_Name | varchar(40) | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> ALTER TABLE BOOK MODIFY Book_Number char(2) NULL;
+ERROR 1171 (42000): All parts of a PRIMARY KEY must be NOT NULL; if you need NULL in a key, use UNIQUE instead
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('1','1','MAR 1 2019','18.95','1');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`good_reading`.`sale`, CONSTRAINT `sale_ibfk_2` FOREIGN KEY (`Customer_Number`) REFERENCES `customer` (`Customer_Number`))
+mysql> DESCRIBE WRITING;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| Book_Number   | char(2) | YES  | MUL | NULL    |       |
+| Author_Number | char(2) | YES  | MUL | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM BOOK;
++-------------+------------------------------------------+--------------+-------+---------------------------+
+| Book_Number | Book_Name                                | Publish_Year | Pages | Publisher_Name            |
++-------------+------------------------------------------+--------------+-------+---------------------------+
+| 1           | Don't throw rocks at strangers           | 1856         | 274   | Fortune Cookie Publishing |
+| 10          | Ken, shrimp and other Barbie accessories | 1982         | 307   | Outback Publishing        |
+| 2           | Things to do since discovering fire      | 273          | 6     | Mega Publishing           |
+| 3           | Things to throw off a cliff              | 1939         | 512   | Acme and Sons, Inc.       |
+| 4           | 101 Roadrunner Recipes                   | 1962         | 97    | Acme and Sons, Inc.       |
+| 5           | Prussian ideals in the modern world      | 1860         | 208   | Das Book                  |
+| 6           | Cheeses of the world                     | 1881         | 610   | Ye Olde Printing Press    |
+| 7           | Your new cauldron and you                | 1811         | 793   | Flourish and Blotts       |
+| 8           | That's fast! An Autobahn Reader's Guide  | 1970         | 321   | Das Book                  |
+| 9           | Walkabout with Roos                      | 1983         | 206   | Outback Publishing        |
++-------------+------------------------------------------+--------------+-------+---------------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * 
+    -> FROM SALE;
+Empty set (0.00 sec)
+
+mysql> DESCRIBE SALE;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| Book_Number     | char(2)      | YES  | MUL | NULL    |       |
+| Customer_Number | varchar(2)   | YES  | MUL | NULL    |       |
+| Date            | varchar(20)  | YES  |     | NULL    |       |
+| Price           | decimal(7,2) | YES  |     | NULL    |       |
+| Quantity        | char(2)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> DESCRIBE CUSTOMER
+    -> ;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| Customer_Number | char(2)     | NO   | PRI | NULL    |       |
+| Customer_Name   | varchar(20) | YES  |     | NULL    |       |
+| Street          | varchar(25) | YES  |     | NULL    |       |
+| City            | varchar(20) | YES  |     | NULL    |       |
+| state           | varchar(20) | YES  |     | NULL    |       |
+| Country         | varchar(20) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE SALE
+    -> MODIFY COLUMN Customer_Number Char(2);
+ERROR 1832 (HY000): Cannot change column 'Customer_Number': used in a foreign key constraint 'sale_ibfk_2'
+mysql> SET FOREIGN_KEY_CHECKS = 0;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> ALTER TABLE SALE
+    -> MODIFY COLUMN Customer_Number Char(2);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SET FORIEGN_KEY_CHECKS = 1;
+ERROR 1193 (HY000): Unknown system variable 'FORIEGN_KEY_CHECKS'
+mysql> SET FOREIGN_KEYS_CHECKS = 1;
+ERROR 1193 (HY000): Unknown system variable 'FOREIGN_KEYS_CHECKS'
+mysql> SET FOREIGN_KEY_CHECKS = 1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DESCRIBE SALE;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| Book_Number     | char(2)      | YES  | MUL | NULL    |       |
+| Customer_Number | char(2)      | YES  | MUL | NULL    |       |
+| Date            | varchar(20)  | YES  |     | NULL    |       |
+| Price           | decimal(7,2) | YES  |     | NULL    |       |
+| Quantity        | char(2)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('1','1','Mar 1 2019','18.95','1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('3','2','April 17 2019','14.99','2'),
+    -> ('5','4','September 9 2018','22.75','4'),
+    -> ('9','1','July 5 2018','29.99','1'),
+    -> ('2','4','Feb 3 2019','9.98','2'),
+    -> ('6','3','November 3 2018','11.95','3'),
+    -> ('3','4','May 18 2019','14.99','1'),
+    -> ('5','6','June 6 2019','22.75','1');
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> FROM SALE;
++-------------+-----------------+------------------+-------+----------+
+| Book_Number | Customer_Number | Date             | Price | Quantity |
++-------------+-----------------+------------------+-------+----------+
+| 1           | 1               | Mar 1 2019       | 18.95 | 1        |
+| 3           | 2               | April 17 2019    | 14.99 | 2        |
+| 5           | 4               | September 9 2018 | 22.75 | 4        |
+| 9           | 1               | July 5 2018      | 29.99 | 1        |
+| 2           | 4               | Feb 3 2019       |  9.98 | 2        |
+| 6           | 3               | November 3 2018  | 11.95 | 3        |
+| 3           | 4               | May 18 2019      | 14.99 | 1        |
+| 5           | 6               | June 6 2019      | 22.75 | 1        |
++-------------+-----------------+------------------+-------+----------+
+8 rows in set (0.01 sec)
+
+mysql> INSERT INTO SALE
+    -> VALUES
+    -> ('7','5','January 15 2019','17.95','2'),
+    -> ('9','1','October 22 2018','29.99','1');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *
+    -> FROM SALE;
++-------------+-----------------+------------------+-------+----------+
+| Book_Number | Customer_Number | Date             | Price | Quantity |
++-------------+-----------------+------------------+-------+----------+
+| 1           | 1               | Mar 1 2019       | 18.95 | 1        |
+| 3           | 2               | April 17 2019    | 14.99 | 2        |
+| 5           | 4               | September 9 2018 | 22.75 | 4        |
+| 9           | 1               | July 5 2018      | 29.99 | 1        |
+| 2           | 4               | Feb 3 2019       |  9.98 | 2        |
+| 6           | 3               | November 3 2018  | 11.95 | 3        |
+| 3           | 4               | May 18 2019      | 14.99 | 1        |
+| 5           | 6               | June 6 2019      | 22.75 | 1        |
+| 7           | 5               | January 15 2019  | 17.95 | 2        |
+| 9           | 1               | October 22 2018  | 29.99 | 1        |
++-------------+-----------------+------------------+-------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country=Australia
+    -> AND Country=England;
+ERROR 1054 (42S22): Unknown column 'Australia' in 'where clause'
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia'
+    -> AND Country='England';
+Empty set (0.01 sec)
+
+mysql> SELECT Publisher_Name, Telephone AS Aus_Eng_Publishers
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia'
+    -> AND Country='England'
+    -> ;
+Empty set (0.00 sec)
+
+mysql> SELECT Publisher_Name
+    -> FROM PUBLISHER
+    -> WHERE Country='England';
++------------------------+
+| Publisher_Name         |
++------------------------+
+| Flourish and Blotts    |
+| Ye Olde Printing Press |
++------------------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia','England';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','England'' at line 3
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country=('Australia','England');
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia' AND 'England';
+Empty set, 1 warning (0.01 sec)
+
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia' AND Country='England';
+Empty set (0.01 sec)
+
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia' OR 'England';
++--------------------+---------------------+
+| Publisher_Name     | Telephone           |
++--------------------+---------------------+
+| Down Under Press   | 031 61 04 8527 1593 |
+| Outback Publishing | 031 61 08 6813      |
++--------------------+---------------------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT Publisher_Name, Telephone
+    -> FROM PUBLISHER
+    -> WHERE Country='Australia' OR Country='England';
++------------------------+---------------------+
+| Publisher_Name         | Telephone           |
++------------------------+---------------------+
+| Down Under Press       | 031 61 04 8527 1593 |
+| Flourish and Blotts    | 011 44 20 4567 8952 |
+| Outback Publishing     | 031 61 08 6813      |
+| Ye Olde Printing Press | 011 44 20 4567      |
++------------------------+---------------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT Author_Name 
+    -> FROM AUTHOR
+    -> WHERE Year_Born >='1800' OR Year_Born =<'1899';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=<'1899'' at line 3
+mysql> SELECT Author_Name
+    -> FROM AUTHOR
+    -> WHERE Year_Born >='1800' OR Year_Born <='1899';
++-------------------------+
+| Author_Name             |
++-------------------------+
+| Bookimus Writimus       |
+| Jonathan Slow           |
+| Stephen Queen           |
+| Russell Jennings        |
+| Joe Schmoe              |
+| Alexander Scribblalotte |
+| Mary Jotanote           |
+| Simon Bonaparte         |
++-------------------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT Author_Name
+    -> FROM AUTHOR
+    -> WHERE Year_Born >='1800' AND  Year_Born <='1899';
++-------------------------+
+| Author_Name             |
++-------------------------+
+| Jonathan Slow           |
+| Alexander Scribblalotte |
+| Mary Jotanote           |
++-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT Publisher_Name
+    -> FROM Publisher
+    -> ;
++---------------------------+
+| Publisher_Name            |
++---------------------------+
+| Acme and Sons, Inc.       |
+| Das Book                  |
+| Down Under Press          |
+| Flourish and Blotts       |
+| Fortune Cookie Publishing |
+| Mega Publishing           |
+| Outback Publishing        |
+| Ye Olde Printing Press    |
++---------------------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT Author_Name, Book_Name
+    -> FROM AUTHOR JOIN BOOK USING (WRITING)
+    ->      JOIN AUTHOR USING(Author_Number)
+    ->      JOIN BOOK USING(Book_Number);
+ERROR 1066 (42000): Not unique table/alias: 'AUTHOR'
+mysql> SELECT Author_Name, Book_Name
+    -> FROM AUTHOR JOIN BOOK USING (WRITING);
+ERROR 1054 (42S22): Unknown column 'WRITING' in 'from clause'
+mysql> SELECT Author_Name, Book_Name
+    -> FROM AUTHOR JOIN BOOK USING(Author_Number);
+ERROR 1054 (42S22): Unknown column 'Author_Number' in 'from clause'
+mysql> SELECT Author_Name, Book_Name
+    ->      Join WRITING USING(Author_Name)
+    ->      AND ^C
+mysql> SELECT Author_Name, Book_Name
+    -> FROM WRITING JOIN AUTHOR USING(Author_Number)
+    ->      AND BOOK USING(Book_Number);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND BOOK USING(Book_Number)' at line 3
+mysql> SELECT Author_Name, Book_Name
+    -> FROM WRITING JOIN AUTHOR USING(Author_Number)
+    -> JOIN BOOK USING(Book_Number);
++-------------------------+------------------------------------------+
+| Author_Name             | Book_Name                                |
++-------------------------+------------------------------------------+
+| Jonathan Slow           | Don't throw rocks at strangers           |
+| Mary Jotanote           | Don't throw rocks at strangers           |
+| Joe Schmoe              | Ken, shrimp and other Barbie accessories |
+| Bookimus Writimus       | Things to do since discovering fire      |
+| Russell Jennings        | Things to throw off a cliff              |
+| Stephen Queen           | 101 Roadrunner Recipes                   |
+| Jonathan Slow           | Prussian ideals in the modern world      |
+| Alexander Scribblalotte | Cheeses of the world                     |
+| Simon Bonaparte         | Your new cauldron and you                |
+| Stephen Queen           | That's fast! An Autobahn Reader's Guide  |
+| Joe Schmoe              | That's fast! An Autobahn Reader's Guide  |
+| Joe Schmoe              | Walkabout with Roos                      |
++-------------------------+------------------------------------------+
+12 rows in set (0.04 sec)
+
+mysql> SELECT Author_Name, Book_Name
+    -> FROM WRITING JOIN AUTHOR USING(Author_Number)
+    -> JOIN BOOK USING(Book_Number)
+    -> ORDER BY Author_Name, Book_Name ASC|DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '|DESC' at line 4
+mysql> SELECT Author_Name, Book_Name
+    -> FROM WRITING JOIN AUTHOR USING(Author_Number)
+    -> JOIN BOOK USING(Book_Number)
+    -> ORDER BY Author_Name, Book_Name DESC;
++-------------------------+------------------------------------------+
+| Author_Name             | Book_Name                                |
++-------------------------+------------------------------------------+
+| Alexander Scribblalotte | Cheeses of the world                     |
+| Bookimus Writimus       | Things to do since discovering fire      |
+| Joe Schmoe              | Walkabout with Roos                      |
+| Joe Schmoe              | That's fast! An Autobahn Reader's Guide  |
+| Joe Schmoe              | Ken, shrimp and other Barbie accessories |
+| Jonathan Slow           | Prussian ideals in the modern world      |
+| Jonathan Slow           | Don't throw rocks at strangers           |
+| Mary Jotanote           | Don't throw rocks at strangers           |
+| Russell Jennings        | Things to throw off a cliff              |
+| Simon Bonaparte         | Your new cauldron and you                |
+| Stephen Queen           | That's fast! An Autobahn Reader's Guide  |
+| Stephen Queen           | 101 Roadrunner Recipes                   |
++-------------------------+------------------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> SELECT MAX(Pages);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT MAX(Pages)' at line 3
+mysql> Select MAX(Pages) AS Most_Pages
+    -> FROM BOOK;
++------------+
+| Most_Pages |
++------------+
+| 97         |
++------------+
+1 row in set (0.03 sec)
+
+mysql> SELECT Book_Name, Publisher_Name
+    -> From BOOK
+    -> WHERE MAX(Pages);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> SELECT Book_Name, Publisher_Name, MAX(Pages)
+    -> FROM BOOK;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'good_reading.BOOK.Book_Name'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT Book_Name, Publisher_Name, MAX(Pages)
+    -> FROM BOOK
+    -> GROUP by Book_Name, Publisher_Name;
++------------------------------------------+---------------------------+------------+
+| Book_Name                                | Publisher_Name            | MAX(Pages) |
++------------------------------------------+---------------------------+------------+
+| Don't throw rocks at strangers           | Fortune Cookie Publishing | 274        |
+| Ken, shrimp and other Barbie accessories | Outback Publishing        | 307        |
+| Things to do since discovering fire      | Mega Publishing           | 6          |
+| Things to throw off a cliff              | Acme and Sons, Inc.       | 512        |
+| 101 Roadrunner Recipes                   | Acme and Sons, Inc.       | 97         |
+| Prussian ideals in the modern world      | Das Book                  | 208        |
+| Cheeses of the world                     | Ye Olde Printing Press    | 610        |
+| Your new cauldron and you                | Flourish and Blotts       | 793        |
+| That's fast! An Autobahn Reader's Guide  | Das Book                  | 321        |
+| Walkabout with Roos                      | Outback Publishing        | 206        |
++------------------------------------------+---------------------------+------------+
+10 rows in set (0.03 sec)
+
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> WHERE MAX(Pages);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> SELECT FROM BOOK
+    -> WHERE Book_Name = (select MAX(Pages) from Book;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM BOOK
+WHERE Book_Name = (select MAX(Pages) from Book' at line 1
+mysql> Select Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> WHERE Book_Name = (select MAX(Pages));
+Empty set (0.03 sec)
+
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK^C
+mysql> SELECT Book_Name, Publisher_Name, MAX(Pages) AS Most_Pages
+    -> FROM BOOK
+    -> GROUP BY Book_Name, Publisher_Name;
++------------------------------------------+---------------------------+------------+
+| Book_Name                                | Publisher_Name            | Most_Pages |
++------------------------------------------+---------------------------+------------+
+| Don't throw rocks at strangers           | Fortune Cookie Publishing | 274        |
+| Ken, shrimp and other Barbie accessories | Outback Publishing        | 307        |
+| Things to do since discovering fire      | Mega Publishing           | 6          |
+| Things to throw off a cliff              | Acme and Sons, Inc.       | 512        |
+| 101 Roadrunner Recipes                   | Acme and Sons, Inc.       | 97         |
+| Prussian ideals in the modern world      | Das Book                  | 208        |
+| Cheeses of the world                     | Ye Olde Printing Press    | 610        |
+| Your new cauldron and you                | Flourish and Blotts       | 793        |
+| That's fast! An Autobahn Reader's Guide  | Das Book                  | 321        |
+| Walkabout with Roos                      | Outback Publishing        | 206        |
++------------------------------------------+---------------------------+------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> WHERE Pages = (SELECT MAX(Pages) FROM BOOK;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> WHERE Pages = (SELECT MAX(Pages) FROM BOOK);
++------------------------+---------------------+
+| Book_Name              | Publisher_Name      |
++------------------------+---------------------+
+| 101 Roadrunner Recipes | Acme and Sons, Inc. |
++------------------------+---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> WHERE Pages = (SELECT MAX(Pages) Pages FROM BOOK);
++------------------------+---------------------+
+| Book_Name              | Publisher_Name      |
++------------------------+---------------------+
+| 101 Roadrunner Recipes | Acme and Sons, Inc. |
++------------------------+---------------------+
+1 row in set (0.05 sec)
+
+mysql> SELECT T.*
+    -> FROM BOOK
+    -> ORDER BY Pages DESC
+    -> limit 1;
+ERROR 1051 (42S02): Unknown table 'T'
+mysql> SELECT Book_Name, Publisher_Name
+    -> FROM BOOK
+    -> ORDER BY Pages DESC
+    -> limit 1;
++------------------------+---------------------+
+| Book_Name              | Publisher_Name      |
++------------------------+---------------------+
+| 101 Roadrunner Recipes | Acme and Sons, Inc. |
++------------------------+---------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT *
+    -> FROM BOOK
+    -> ;
++-------------+------------------------------------------+--------------+-------+---------------------------+
+| Book_Number | Book_Name                                | Publish_Year | Pages | Publisher_Name            |
++-------------+------------------------------------------+--------------+-------+---------------------------+
+| 1           | Don't throw rocks at strangers           | 1856         | 274   | Fortune Cookie Publishing |
+| 10          | Ken, shrimp and other Barbie accessories | 1982         | 307   | Outback Publishing        |
+| 2           | Things to do since discovering fire      | 273          | 6     | Mega Publishing           |
+| 3           | Things to throw off a cliff              | 1939         | 512   | Acme and Sons, Inc.       |
+| 4           | 101 Roadrunner Recipes                   | 1962         | 97    | Acme and Sons, Inc.       |
+| 5           | Prussian ideals in the modern world      | 1860         | 208   | Das Book                  |
+| 6           | Cheeses of the world                     | 1881         | 610   | Ye Olde Printing Press    |
+| 7           | Your new cauldron and you                | 1811         | 793   | Flourish and Blotts       |
+| 8           | That's fast! An Autobahn Reader's Guide  | 1970         | 321   | Das Book                  |
+| 9           | Walkabout with Roos                      | 1983         | 206   | Outback Publishing        |
++-------------+------------------------------------------+--------------+-------+---------------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Book_Name, Customer_Name, Publisher_Name, Telephone, AS Sale_Info
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> JOIN BOOK USING(Book_Number)
+    -> JOIN PUBLISHER USING(Publisher_Name);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS Sale_Info
+FROM SALE JOIN CUSTOMER USING(Customer_Number)
+JOIN BOOK USING(Book' at line 1
+mysql> SELECT Book_Name, Customer_Name, Publisher_Name, Telephone AS Sale_Info
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> JOIN BOOK USING(Book_Number)
+    -> JOIN PUBLISHER USING(Publisher_Name);
++-------------------------------------+-----------------+---------------------------+---------------------+
+| Book_Name                           | Customer_Name   | Publisher_Name            | Sale_Info           |
++-------------------------------------+-----------------+---------------------------+---------------------+
+| Don't throw rocks at strangers      | Fred Flinstone  | Fortune Cookie Publishing | 024 86 10 8529 1567 |
+| Walkabout with Roos                 | Fred Flinstone  | Outback Publishing        | 031 61 08 6813      |
+| Walkabout with Roos                 | Fred Flinstone  | Outback Publishing        | 031 61 08 6813      |
+| Things to throw off a cliff         | Herman Munster  | Acme and Sons, Inc.       | 510-555-3456        |
+| Cheeses of the world                | Stewie Griffin  | Ye Olde Printing Press    | 011 44 20 4567      |
+| Prussian ideals in the modern world | Elroy Jetson    | Das Book                  | 011 49 69 1234 5678 |
+| Things to do since discovering fire | Elroy Jetson    | Mega Publishing           | 510-555-1234        |
+| Things to throw off a cliff         | Elroy Jetson    | Acme and Sons, Inc.       | 510-555-3456        |
+| Your new cauldron and you           | Norville Rogers | Flourish and Blotts       | 011 44 20 4567 8952 |
+| Prussian ideals in the modern world | Foghorn Leghorn | Das Book                  | 011 49 69 1234 5678 |
++-------------------------------------+-----------------+---------------------------+---------------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT Book_Name, Customer_Name, Publisher_Name, Telephone 
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> JOIN BOOK USING(Book_Number)
+    -> JOIN PUBLISHER USING(Publisher_Name);
++-------------------------------------+-----------------+---------------------------+---------------------+
+| Book_Name                           | Customer_Name   | Publisher_Name            | Telephone           |
++-------------------------------------+-----------------+---------------------------+---------------------+
+| Don't throw rocks at strangers      | Fred Flinstone  | Fortune Cookie Publishing | 024 86 10 8529 1567 |
+| Walkabout with Roos                 | Fred Flinstone  | Outback Publishing        | 031 61 08 6813      |
+| Walkabout with Roos                 | Fred Flinstone  | Outback Publishing        | 031 61 08 6813      |
+| Things to throw off a cliff         | Herman Munster  | Acme and Sons, Inc.       | 510-555-3456        |
+| Cheeses of the world                | Stewie Griffin  | Ye Olde Printing Press    | 011 44 20 4567      |
+| Prussian ideals in the modern world | Elroy Jetson    | Das Book                  | 011 49 69 1234 5678 |
+| Things to do since discovering fire | Elroy Jetson    | Mega Publishing           | 510-555-1234        |
+| Things to throw off a cliff         | Elroy Jetson    | Acme and Sons, Inc.       | 510-555-3456        |
+| Your new cauldron and you           | Norville Rogers | Flourish and Blotts       | 011 44 20 4567 8952 |
+| Prussian ideals in the modern world | Foghorn Leghorn | Das Book                  | 011 49 69 1234 5678 |
++-------------------------------------+-----------------+---------------------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT Book_Name, Customer_Name, Publisher_Name, Telephone
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> JOIN BOOK USING(Book_Number)
+    -> JOIN PUBLISHER USING(Publisher_Name);
++-------------------------------------+-----------------+---------------------------+---------------------+
+| Book_Name                           | Customer_Name   | Publisher_Name            | Telephone           |
++-------------------------------------+-----------------+---------------------------+---------------------+
+| Don't throw rocks at strangers      | Fred Flinstone  | Fortune Cookie Publishing | 024 86 10 8529 1567 |
+| Walkabout with Roos                 | Fred Flinstone  | Outback Publishing        | 031 61 08 6813      |
+| Things to throw off a cliff         | Herman Munster  | Acme and Sons, Inc.       | 510-555-3456        |
+| Cheeses of the world                | Stewie Griffin  | Ye Olde Printing Press    | 011 44 20 4567      |
+| Prussian ideals in the modern world | Elroy Jetson    | Das Book                  | 011 49 69 1234 5678 |
+| Things to do since discovering fire | Elroy Jetson    | Mega Publishing           | 510-555-1234        |
+| Things to throw off a cliff         | Elroy Jetson    | Acme and Sons, Inc.       | 510-555-3456        |
+| Your new cauldron and you           | Norville Rogers | Flourish and Blotts       | 011 44 20 4567 8952 |
+| Prussian ideals in the modern world | Foghorn Leghorn | Das Book                  | 011 49 69 1234 5678 |
++-------------------------------------+-----------------+---------------------------+---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT Customer_Name, Quantity
+    -> FROM ^C
+mysql> SELECT Customer_Name, MAX(Quantity) AS Total_Books_Purchased
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number);
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'good_reading.CUSTOMER.Customer_Name'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT Customer_Name, Quantity AS Total_Books_Purchased
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number
+    -> WHERE Quantity = (SELECT MAX(Quantity) FROM SALE);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Quantity = (SELECT MAX(Quantity) FROM SALE)' at line 3
+mysql> SELECT Customer_Name, Quantity AS Total_Books_Purchased
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> WHERE Quantity = (SELECT MAX(Quantity) FROM SALE);
++---------------+-----------------------+
+| Customer_Name | Total_Books_Purchased |
++---------------+-----------------------+
+| Elroy Jetson  | 4                     |
++---------------+-----------------------+
+1 row in set (0.08 sec)
+
+mysql> SELECT Customer_Name, Quantity AS Total_Books_Purchased
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> WHERE Quantity = (SELECT SUM(Quantity) FROM SALE);
+Empty set (0.05 sec)
+
+mysql> SELECT Customer_Name,SUM(Quantity) AS Total_Books_Purchased
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> GROUP BY Customer_Name;
++-----------------+-----------------------+
+| Customer_Name   | Total_Books_Purchased |
++-----------------+-----------------------+
+| Fred Flinstone  |                     3 |
+| Herman Munster  |                     2 |
+| Elroy Jetson    |                     7 |
+| Stewie Griffin  |                     3 |
+| Foghorn Leghorn |                     1 |
+| Norville Rogers |                     2 |
++-----------------+-----------------------+
+6 rows in set (0.03 sec)
+
+mysql> SELECT Customer_Name
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> WHERE Quantity > '1';
++-----------------+
+| Customer_Name   |
++-----------------+
+| Herman Munster  |
+| Elroy Jetson    |
+| Elroy Jetson    |
+| Stewie Griffin  |
+| Norville Rogers |
++-----------------+
+5 rows in set (0.05 sec)
+
+mysql> SELECT Customer_Name,SUM(Quantity) AS Frequent_Shoppers
+    -> ^C
+mysql> SELECT Customer_Name,SUM(Customer_Number) AS Frequent_Shoppers
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> GROUP BY Customer_Name
+    -> HAVING COUNT(*) > 1;
++----------------+-------------------+
+| Customer_Name  | Frequent_Shoppers |
++----------------+-------------------+
+| Fred Flinstone |                 3 |
+| Elroy Jetson   |                12 |
++----------------+-------------------+
+2 rows in set (0.06 sec)
+
+mysql> SELECT Customer_Name,SUM(Quantity) AS Frequent_Shoppers
+    -> FROM SALE JOIN CUSTOMER USING(Customer_Number)
+    -> GROUP BY Customer_Name
+    -> HAVING COUNT(*) > 1;
++----------------+-------------------+
+| Customer_Name  | Frequent_Shoppers |
++----------------+-------------------+
+| Fred Flinstone |                 3 |
+| Elroy Jetson   |                 7 |
++----------------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> 
