@@ -1,8 +1,23 @@
-# MySQL_Projects
+# Cruise Line Database – MySQL Coursework
 
-## MySQL Contents
+This repository contains MySQL assignments and database design work completed as part of the *Database Principles* course (ITEC 3245) at Middle Georgia State University.
 
-The following projects contained within this repository showcase my coursework within MySQL. 
+** Overview
+The coursework involved:
+- Writing SQL queries to retrieve and filter data from relational tables.
+- Designing and interpreting an Entity-Relationship Diagram (ERD).
+- Executing and testing queries using the MySQL command line.
+
+The database models a cruise line scenario, including ships, passengers, sailors, and voyage data.
+
+## Key Concepts Demonstrated
+- `SELECT`, `WHERE`, `AND/OR`, `ORDER BY`, `GROUP BY`
+- `JOIN` operations between multiple tables
+- Filtering data by date ranges and specific values
+- Understanding and visualizing entity relationships (ERD)
+- Data modeling using crow's foot notation
+
+-----
 
 ## Entity Relationship Diagram (ERD)
 
