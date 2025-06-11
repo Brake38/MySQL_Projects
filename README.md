@@ -2,7 +2,7 @@
 
 This repository contains MySQL assignments and database design work completed as part of the *Database Principles* course (ITEC 3245) at Middle Georgia State University.
 
-** Overview
+## Overview
 The coursework involved:
 - Writing SQL queries to retrieve and filter data from relational tables.
 - Designing and interpreting an Entity-Relationship Diagram (ERD).
